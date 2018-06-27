@@ -1,13 +1,16 @@
 
-# 36—ñ–Ú‚É‹àŠzA37—ñ–Ú‚É”—Ê‚ª‚ ‚è‚»‚ê‚ğWŒv
+# 36åˆ—ç›®ã«é‡‘é¡ã€37åˆ—ç›®ã«æ•°é‡ãŒã‚ã‚Šãã‚Œã‚’é›†è¨ˆ
 for %d in (ORDER_?????????????0.csv) do C:\work\90_tools\gawk-mbcs-win32-20051223\gawk -F "," "BEGIN{sum=0}{sum+=$36*$37}END{print FILENAME,sum}" "%d" >> 201801_uriage_sell.txt
 for %d in (ORDER_?????????????1.csv) do C:\work\90_tools\gawk-mbcs-win32-20051223\gawk -F "," "BEGIN{sum=0}{sum+=$36*$37}END{print FILENAME,sum}" "%d" >> 201801_henpin_sell.txt
 for %d in (ORDER_?????????????2.csv) do C:\work\90_tools\gawk-mbcs-win32-20051223\gawk -F "," "BEGIN{sum=0}{sum+=$36*$37}END{print FILENAME,sum}" "%d" >> 201801_uriage_used.txt
 for %d in (ORDER_?????????????3.csv) do C:\work\90_tools\gawk-mbcs-win32-20051223\gawk -F "," "BEGIN{sum=0}{sum+=$36*$37}END{print FILENAME,sum}" "%d" >> 201801_henpin_used.txt
 
-# 2—ñ–Ú‚ªAAA-n‚Ü‚è‚ÌƒR[ƒh‚©‚ÂA1—ñ–Ú‚ª11‚Ìê‡‚Æ‚»‚êˆÈŠO‚Ì12—ñ–Ú‚Ì‡Œv‚ğsum1‚Æsum2‚ÉAAAA-ˆÈŠO‚Ìn‚Ü‚è‚ÌƒR[ƒh‚©‚ÂA1—ñ–Ú‚ª11‚Ìê‡‚Æ‚»‚êˆÈŠO‚Ì12—ñ–Ú‚Ì‡Œv‚ğsum3‚Æsum4‚É
+# 2åˆ—ç›®ãŒAAA-å§‹ã¾ã‚Šã®ã‚³ãƒ¼ãƒ‰ã‹ã¤ã€1åˆ—ç›®ãŒ11ã®å ´åˆã¨ãã‚Œä»¥å¤–ã®12åˆ—ç›®ã®åˆè¨ˆã‚’sum1ã¨sum2ã«ã€AAA-ä»¥å¤–ã®å§‹ã¾ã‚Šã®ã‚³ãƒ¼ãƒ‰ã‹ã¤ã€1åˆ—ç›®ãŒ11ã®å ´åˆã¨ãã‚Œä»¥å¤–ã®12åˆ—ç›®ã®åˆè¨ˆã‚’sum3ã¨sum4ã«
 for %d in (*.csv) do C:\work\90_tools\gawk-mbcs-win32-20051223\gawk -F "," "BEGIN{sum1=0;sum2=0;sum3=0;sum4=0;OFS="""\t"""}{if($1 !~ 11) {if($2 ~ /AAA-*/) sum1+=$12; else sum3+=$12} else if($2 ~ /AAA-*/) sum2+=$12; else sum4+=$12}END{print FILENAME,sum1,sum2,sum3,sum4}" "%d" >> 201801_uriage_henpin.txt" 
 
-# ‚·‚×‚Ä""‚ÅˆÍ‚Ü‚ê‚Ä‚¢‚éCSV‚Ì‹æ•ª($1)‚ª0‚©1‚©‚Å”„ã‚Æ•Ô•i‚ğ”»’fBWŒv‚Í10—ñ–Ú * 11—ñ–Ú
+# "
+# ã™ã¹ã¦""ã§å›²ã¾ã‚Œã¦ã„ã‚‹CSVã®åŒºåˆ†($1)ãŒ0ã‹1ã‹ã§å£²ä¸Šã¨è¿”å“ã‚’åˆ¤æ–­ã€‚é›†è¨ˆã¯10åˆ—ç›® * 11åˆ—ç›®
 for %d in (*.csv) do C:\work\90_tools\gawk-mbcs-win32-20051223\gawk -F """,""" "BEGIN{sum=0;sum2=0}{if($13 ~ /^-/) sum2+=$12*$13; else sum+=$12*$13}END{print FILENAME,sum,sum2}" "%d" >> 201801_uriage_henpin.txt
 
+# 2åˆ—ç›®ãŒ0ã‹0ä»¥å¤–ã€10åˆ—ç›®ãŒ1ã‹1ä»¥å¤–ã€ã®çµ„ã¿åˆã‚ã›ã§8åˆ—ç›®ã¨0åˆ—ç›®ã‚’sumã¨sum2ã«é›†è¨ˆ
+for %d in (*.csv) do C:\work\90_tools\gawk-mbcs-win32-20051223\gawk -F "," "BEGIN{sum=0;sum2=0}{if($2 !~ 0) if($10 !~ 1) sum+=$8*$9; else sum2+=$8*$9}END{print FILENAME,sum,sum2}" "%d" >> 201801_uriage_henpin.txt
